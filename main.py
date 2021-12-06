@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # enhanced = 255 * enhanced
     # enhanced = enhanced.astype(np.uint8)
     # cv2.imshow("Window", enhanced)
-    # cv2.waitKey(0)
+    # cv2.waitKey(0)    
 
     # step 2: histogram denoising
     enhanced_gray = cv2.cvtColor(normalized_img, cv2.COLOR_RGB2GRAY)
