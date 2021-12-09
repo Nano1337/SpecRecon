@@ -76,7 +76,7 @@ def run_weak_detect(img):
     # Establish first mask to build off of
     a = pix[0, 0]
     b = pix[1, 0]
-    tol = 0.15
+    tol = 0.25
     primary_mask = np.array(flood(enhanced_gray * 1.01, (a, b), tolerance=tol).astype(int), dtype=np.uint8)
     for i in range(1, pix.shape[1]):
         a = pix[0, i]
