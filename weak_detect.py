@@ -89,7 +89,9 @@ def run_weak_detect(img):
     # cv2.imshow("Window", primary_mask)
     # cv2.waitKey(0)
 
-    # Superimposing mask on real image to see segmentation results
-    img[primary_mask > 0] = 0
-    cv2.imshow("Window", img)
-    cv2.waitKey(0)
+    # # Superimposing mask on real image to see segmentation results
+    # img[primary_mask > 0] = 0
+    # cv2.imshow("Window", img)
+    # cv2.waitKey(0)
+
+    return img, primary_mask
