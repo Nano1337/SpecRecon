@@ -1,4 +1,7 @@
 from weak_detect import *
+import os
+import random
+from load_data import load_data
 
 def get_run_time(function, var):
     '''Get run time of function passed in'''
@@ -12,31 +15,13 @@ def get_run_time(function, var):
     print(execution_time)
 
 
-def getSIFTfeatures(image, isImage=True, imask=None):
-    '''Get keypoints and descriptors of an input image'''
-    # reading image
-    if isImage:
-        img = cv2.imread(image)
-    else:
-        img = image
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # keypoints
-    sift = cv2.SIFT_create()
-    keypoints, descriptors = sift.detectAndCompute(gray, mask=imask)
-
-    # display keypoints on image
-    # img = cv2.drawKeypoints(gray, keypoints, img)
-    # cv2.imshow("Window", img)
-    # cv2.waitKey(0)
-
-    return keypoints, descriptors
-
-
 if __name__ == "__main__":
-    # get a image from the file
-    # img = cv2.imread("D:\\GLENDA_v1.5_no_pathology\\no_pathology\\frames\\v_2506_s_0-95\\f_0.jpg")  # 640x360 size
+    # get an image from the file
+    img = cv2.imread("D:/weak_data/weak_test_images/1.tif")  # 640x360 size
+    _, mask = run_weak_detect(img)
     # get_run_time(run_weak_detect, img) # Don't forget to disable display window for more accurate runtime
+    # Run weak label algo through each image to store corresponding binary mask
+
 
 
 

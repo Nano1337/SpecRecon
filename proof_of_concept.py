@@ -1,4 +1,25 @@
+def getSIFTfeatures(image, isImage=True, imask=None):
+    '''Get keypoints and descriptors of an input image'''
+    # reading image
+    if isImage:
+        img = cv2.imread(image)
+    else:
+        img = image
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # keypoints
+    sift = cv2.SIFT_create()
+    keypoints, descriptors = sift.detectAndCompute(gray, mask=imask)
+
+    # display keypoints on image
+    # img = cv2.drawKeypoints(gray, keypoints, img)
+    # cv2.imshow("Window", img)
+    # cv2.waitKey(0)
+
+    return keypoints, descriptors
+
 def run_poc():
+    '''Proof of Concept that multi-frame specular reflection restoration is possible'''
     # Load images and SIFT
     img1 = cv2.imread("frame1.jpg")
     img1, mask1 = run_weak_detect(img1)
