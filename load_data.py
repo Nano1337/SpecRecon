@@ -1,3 +1,4 @@
+from weak_detect import *
 import os
 import random
 import cv2
@@ -20,3 +21,16 @@ def load_data():
             cv2.imwrite(target_path + outfile, read)
             print("Moving file " + str(counter))
             counter += 1
+
+def load_masks():
+    '''Run weak label algo through each image to store corresponding binary mask'''
+    base_path = "D:/weak_data/weak_train_images/"
+    target_path = "D:/weak_data/weak_train_masks/"
+    for i in range(2230, 12218):
+        file_path = base_path + str(i) + ".tif"
+        read = cv2.imread(file_path)
+        _, mask = run_weak_detect(read)
+        outfile = "mask_" + str(i) + ".tif"
+        cv2.imwrite(target_path + outfile, mask)
+        print("Making mask " + str(i))
+
